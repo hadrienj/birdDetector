@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "/birdDetector/static/css/main.7c17f9ab.chunk.css",
+    "main.js": "/birdDetector/static/js/main.e61bc4d8.chunk.js",
+    "main.js.map": "/birdDetector/static/js/main.e61bc4d8.chunk.js.map",
+    "runtime-main.js": "/birdDetector/static/js/runtime-main.b63cc9b4.js",
+    "runtime-main.js.map": "/birdDetector/static/js/runtime-main.b63cc9b4.js.map",
+    "static/js/2.6803d480.chunk.js": "/birdDetector/static/js/2.6803d480.chunk.js",
+    "static/js/2.6803d480.chunk.js.map": "/birdDetector/static/js/2.6803d480.chunk.js.map",
+    "index.html": "/birdDetector/index.html",
+    "precache-manifest.bb8735b723ad533ff4f5f4f8d41451b6.js": "/birdDetector/precache-manifest.bb8735b723ad533ff4f5f4f8d41451b6.js",
+    "service-worker.js": "/birdDetector/service-worker.js",
+    "static/css/main.7c17f9ab.chunk.css.map": "/birdDetector/static/css/main.7c17f9ab.chunk.css.map"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.b63cc9b4.js",
+    "static/js/2.6803d480.chunk.js",
+    "static/css/main.7c17f9ab.chunk.css",
+    "static/js/main.e61bc4d8.chunk.js"
+  ]
+}
