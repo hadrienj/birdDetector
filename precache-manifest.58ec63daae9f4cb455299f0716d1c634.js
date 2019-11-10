@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "bc031cfb07187f51e1c0e25211692455",
+    "revision": "35e8137954e8669ff374042666c813c6",
     "url": "/birdDetector/index.html"
   },
   {
-    "revision": "8b5923e690e49f88e21b",
+    "revision": "c94acdf022b337c6ef5a",
     "url": "/birdDetector/static/css/main.7c17f9ab.chunk.css"
   },
   {
@@ -12,8 +12,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/birdDetector/static/js/2.6803d480.chunk.js"
   },
   {
-    "revision": "8b5923e690e49f88e21b",
-    "url": "/birdDetector/static/js/main.606d3865.chunk.js"
+    "revision": "c94acdf022b337c6ef5a",
+    "url": "/birdDetector/static/js/main.19d0ee55.chunk.js"
   },
   {
     "revision": "22ddfa0724f677765f99",
