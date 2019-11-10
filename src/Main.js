@@ -34,6 +34,7 @@ class Main extends Component {
   }
 
   render() {
+    console.log(`=================== ${process.env.REACT_APP_BACKEND_URL}`)
     let elements;
     if (this.state.loading) {
       elements = (
@@ -59,7 +60,7 @@ class Main extends Component {
             onFileLoaded={this.handleFileLoaded}
           />
           <Spectrogram
-            audioPath={`https://fierce-escarpment-27870.herokuapp.com/static/${this.state.filename}`}
+            audioPath={`${process.env.REACT_APP_BACKEND_URL}/static/${this.state.filename}`}
             isPlaying={this.props.isPlaying}
             isLoaded={this.state.isLoaded}
             onFileLoaded={this.handleFileLoaded}

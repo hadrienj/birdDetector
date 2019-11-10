@@ -22,7 +22,7 @@ class SimpleReactFileUpload extends React.Component {
     this.setState({ file: e.target.files[0] });
   }
   fileUpload(file) {
-    const url = "https://fierce-escarpment-27870.herokuapp.com/";
+    const url = process.env.REACT_APP_BACKEND_URL;
     const formData = new FormData();
     formData.append("file", file);
     const config = {
