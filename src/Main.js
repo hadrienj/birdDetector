@@ -59,7 +59,7 @@ class Main extends Component {
             onFileLoaded={this.handleFileLoaded}
           />
           <Spectrogram
-            audioPath={`https://fierce-escarpment-27870.herokuapp.com/${this.state.filename}`}
+            audioPath={`https://fierce-escarpment-27870.herokuapp.com/static/${this.state.filename}`}
             isPlaying={this.props.isPlaying}
             isLoaded={this.state.isLoaded}
             onFileLoaded={this.handleFileLoaded}
