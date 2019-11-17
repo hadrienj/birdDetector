@@ -39,7 +39,6 @@ class PredPlot extends Component {
             pad: 0
           },
         }}
-        divId="spectrogram"
       />
     );
   }

@@ -15,6 +15,7 @@ class Main extends Component {
       data: [],
       filename: `bird1.wav`,
       isLoaded: false,
+      audioBlob: null,
     };
     this.handleData = this.handleData.bind(this);
     this.handleFilename = this.handleFilename.bind(this);
@@ -31,6 +32,10 @@ class Main extends Component {
 
   handleFileLoaded(isLoaded) {
     this.setState({ isLoaded });
+  }
+
+  handleAudioBlob(audioBlob) {
+    this.setState({ audioBlob });
   }
 
   render() {
@@ -52,11 +57,13 @@ class Main extends Component {
       );
     }
     if (this.state.filename) {
+      console.log(this.state.filename)
       elements = (
         <div>
           <SimpleReactFileUpload
             onGetData={this.handleData}
             onGetFilename={this.handleFilename}
+            onGetAudioBlob={this.handleAudioBlob}
             onFileLoaded={this.handleFileLoaded}
           />
           <Spectrogram
@@ -64,6 +71,8 @@ class Main extends Component {
             isPlaying={this.props.isPlaying}
             isLoaded={this.state.isLoaded}
             onFileLoaded={this.handleFileLoaded}
+            audioBlob={this.state.audioBlob}
+            zoom={this.props.zoom}
           />
           <PredPlot data={this.state.data} />
         </div>
@@ -74,6 +83,16 @@ class Main extends Component {
           <SimpleReactFileUpload
             onGetData={this.handleData}
             onGetFilename={this.handleFilename}
+            onGetAudioBlob={this.handleAudioBlob}
+            onFileLoaded={this.handleFileLoaded}
+          />
+          <Spectrogram
+            audioPath={`${process.env.REACT_APP_BACKEND_URL}/static/${this.state.filename}`}
+            isPlaying={this.props.isPlaying}
+            isLoaded={this.state.isLoaded}
+            onFileLoaded={this.handleFileLoaded}
+            audioBlob={this.state.audioBlob}
+            zoom={this.props.zoom}
           />
           <PredPlot data={this.state.data} />
         </div>
