@@ -38,9 +38,13 @@ class App extends Component {
 	}
 
 	handleKeyDown = event => {
-		event.preventDefault();
 		console.log(event)
 		// this.keys[event.keyCode] = true;
+
+		if (event.key === " ") {
+			event.preventDefault();
+			this.setState({isPlaying: !this.state.isPlaying});
+		}
 
 		if (event.shiftKey && event.key === "ArrowUp") {
 			// command and arrow up
@@ -60,7 +64,6 @@ class App extends Component {
 	};
 
 	handleKeyUp(event) {
-		event.preventDefault();
 		// event.preventDefault();
 		// if (event.key === "Shift") {
 		// 	this.props.setTextLabels(this.textLabels);

@@ -29,7 +29,7 @@ class Spectrogram extends Component {
 			pixelRatio: 2,
 			scrollParent: true,
 			normalize: false,
-			autoCenter: false,
+			autoCenter: true,
 			// barHeight: 2,
 			backend: "WebAudio",
 			// xhr: {
@@ -64,14 +64,14 @@ class Spectrogram extends Component {
 			console.log("err", err);
 		}
 
-		this.wavesurfer.zoom(Number(this.props.zoom));
+		// this.wavesurfer.zoom(Number(this.props.zoom));
 	}
 
 
 
 
 	componentDidUpdate(prevProps) {
-		console.log('update')
+		console.log('update', prevProps);
 		if (prevProps.isPlaying !== this.props.isPlaying) {
 			this.wavesurfer.playPause();
 		}
@@ -82,14 +82,29 @@ class Spectrogram extends Component {
 			const waveformElement = document.getElementById("waveform");
 			waveformElement.removeChild(waveformElement.firstChild);
 			this.createWavesurfer();
+		}
+		if (prevProps.zoom !== this.props.zoom) {
+			// // Remove previous wave
+			// const waveformElement = document.getElementById("waveform");
+			// waveformElement.removeChild(waveformElement.firstChild);
+			// this.createWavesurfer();
+			this.wavesurfer.zoom(Number(this.props.zoom));
 
+			const dur = this.wavesurfer.getDuration();
+			console.log({dur});
+
+
+
+			const node = document.getElementById("wave-spectrogram").childNodes[0].childNodes[0];
+			node.style.width = `${this.props.zoom * dur}px`;
+			node.style.height = "100px";
+			console.log(this.props.zoom);
+			 // > spectrogram > canvas
 		}
 	}
 
 	render() {
 		console.log('render', this.props.zoom);
-		this.createWavesurfer();
-
 
 		// wavesurfer.on("ready", () => {
 		//   this.setState({ loading: false });
