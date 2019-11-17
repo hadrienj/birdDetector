@@ -16,10 +16,14 @@ class Main extends Component {
       filename: `bird1.wav`,
       isLoaded: false,
       audioBlob: null,
+      width: null,
+      zoom: null,
     };
     this.handleData = this.handleData.bind(this);
     this.handleFilename = this.handleFilename.bind(this);
     this.handleFileLoaded = this.handleFileLoaded.bind(this);
+    this.handleWidth = this.handleWidth.bind(this);
+    this.handleZoom = this.handleZoom.bind(this);
   }
 
   handleData(data) {
@@ -36,6 +40,16 @@ class Main extends Component {
 
   handleAudioBlob(audioBlob) {
     this.setState({ audioBlob });
+  }
+
+  handleWidth(width) {
+    this.setState({ width });
+  }
+
+  handleZoom(zoom) {
+    console.log('asdfasdfasdf', zoom)
+    this.setState({ zoom });
+    this.props.onZoom(zoom);
   }
 
   render() {
@@ -73,8 +87,13 @@ class Main extends Component {
             onFileLoaded={this.handleFileLoaded}
             audioBlob={this.state.audioBlob}
             zoom={this.props.zoom}
+            onZoom={this.handleZoom}
+            onWidth={this.handleWidth}
           />
-          <PredPlot data={this.state.data} />
+          <PredPlot
+            data={this.state.data}
+            width={this.state.width}
+          />
         </div>
       );
     } else {
@@ -93,6 +112,8 @@ class Main extends Component {
             onFileLoaded={this.handleFileLoaded}
             audioBlob={this.state.audioBlob}
             zoom={this.props.zoom}
+            onZoom={this.handleZoom}
+            onWidth={this.handleWidth}
           />
           <PredPlot data={this.state.data} />
         </div>

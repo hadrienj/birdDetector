@@ -2,6 +2,8 @@ import React, { Component } from "react";
 
 import "./App.css";
 
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 import Main from "./Main";
 
 class App extends Component {
@@ -9,14 +11,18 @@ class App extends Component {
 		super(props);
 		this.state = {
 			isPlaying: false,
-			zoom: 200
+			zoom: null,
 		};
 
 		this.keys = [];
 
 		this.handleKeyDown = this.handleKeyDown.bind(this);
 		this.handleKeyUp = this.handleKeyUp.bind(this);
-		// document.addEventListener("keydown", this.handleKeyDown, false);
+		this.handleZoom = this.handleZoom.bind(this);
+	}
+
+	handleZoom(zoom) {
+		this.setState({ zoom });
 	}
 
 	unsubscribeFromKeydownEvents() {
@@ -49,13 +55,13 @@ class App extends Component {
 		if (event.shiftKey && event.key === "ArrowUp") {
 			// command and arrow up
 			event.preventDefault();
-			const zoom = this.state.zoom + 300;
+			const zoom = this.state.zoom * 1.25;
 			this.setState({ zoom });
 			console.log('zooom +')
 		} else if (event.shiftKey && event.key === "ArrowDown") {
 			// command and arrow down
 			event.preventDefault();
-			const zoom = this.state.zoom - 300;
+			const zoom = this.state.zoom / 1.25;
 			this.setState({ zoom });
 			console.log('zooom -')
 
@@ -78,7 +84,11 @@ class App extends Component {
 	render() {
 		return (
 			<div className="App">
-				<Main isPlaying={this.state.isPlaying} zoom={this.state.zoom} />
+				<Main
+					isPlaying={this.state.isPlaying}
+					zoom={this.state.zoom}
+					onZoom={this.handleZoom}
+				/>
 			</div>
 		);
 	}

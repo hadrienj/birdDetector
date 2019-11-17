@@ -1,8 +1,6 @@
 import React from "react";
 import axios from "axios";
 
-import Button from "@material-ui/core/Button";
-
 class SimpleReactFileUpload extends React.Component {
   constructor(props) {
     super(props);
@@ -15,7 +13,7 @@ class SimpleReactFileUpload extends React.Component {
   }
   onFormSubmit(e) {
     e.preventDefault(); // Stop form submit
-    this.props.onGetFilename(this.state.filename);
+    this.props.onGetFilename(this.state.file.name);
     this.fileUpload(this.state.file);
   }
   onChange(e) {

@@ -28,7 +28,8 @@ class PredPlot extends Component {
             range: [0, 1],
             showgrid: false,
           },
-          width: window.innerWidth,
+          width: this.props.width || window.innerWidth,
+          dragmode: 'pan',
           height: 200,
           autosize: false,
           margin: {
@@ -39,6 +40,7 @@ class PredPlot extends Component {
             pad: 0
           },
         }}
+        divId="prediction-plot"
       />
     );
   }

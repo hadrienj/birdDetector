@@ -20,6 +20,14 @@ class Spectrogram extends Component {
 		});
 
 		this.createWavesurfer();
+
+		this.wavesurfer.on("ready", () => {
+			// store zoom value
+			const dur = this.wavesurfer.getDuration();
+			const zoom = window.innerWidth / dur;
+			console.log('ffdf', dur, window.innerWidth)
+			this.props.onZoom(zoom);
+		});
 	}
 
 	createWavesurfer() {
@@ -27,9 +35,9 @@ class Spectrogram extends Component {
 			container: "#waveform",
 			height: 100,
 			pixelRatio: 2,
-			scrollParent: true,
+			scrollParent: false,
 			normalize: false,
-			autoCenter: true,
+			autoCenter: false,
 			// barHeight: 2,
 			backend: "WebAudio",
 			// xhr: {
@@ -93,22 +101,29 @@ class Spectrogram extends Component {
 			const dur = this.wavesurfer.getDuration();
 			console.log({dur});
 
+			const width = this.props.zoom * dur;
 
+			// change width spectrogram
+			const nodeSpectrogram = document.getElementById("wave-spectrogram").childNodes[0].childNodes[0];
+			nodeSpectrogram.style.width = `${width}px`;
+			nodeSpectrogram.style.height = "100px";
 
-			const node = document.getElementById("wave-spectrogram").childNodes[0].childNodes[0];
-			node.style.width = `${this.props.zoom * dur}px`;
-			node.style.height = "100px";
-			console.log(this.props.zoom);
-			 // > spectrogram > canvas
+			// change width spectrogram container
+			const nodeSpectrogramContainer = document.getElementById("wave-spectrogram");
+			nodeSpectrogramContainer.style.width = `${width}px`;
+			nodeSpectrogramContainer.style.height = "100px";
+
+			// change width waveform
+			const nodeWaveform = document.getElementById("waveform");
+			nodeWaveform.style.width = `${width}px`;
+			nodeWaveform.style.height = "100px";
+
+			this.props.onWidth(width);
 		}
 	}
 
 	render() {
 		console.log('render', this.props.zoom);
-
-		// wavesurfer.on("ready", () => {
-		//   this.setState({ loading: false });
-		// });
 
 		// wavesurfer.on("error", (err) => {
 		//   this.setState({ loading: false });
