@@ -20,7 +20,7 @@
     "react-loading": "^2.0.3",
     "react-plotly.js": "^2.4.0",
     "react-router-dom": "^5.1.2",
-    "react-scripts": "3.2.0",
+    "react-scripts": "5.0.1",
     "react-wavesurfer-spectrogram": "^0.0.1",
     "wavesurfer.js": "^3.2.0"
   },
